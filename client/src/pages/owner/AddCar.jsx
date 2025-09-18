@@ -1,28 +1,52 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Title from '../../components/owner/Title'
 import { assets } from '../../assets/assets'
 import { useAppContext } from '../../context/AppContext'
 import toast from 'react-hot-toast'
+import { useParams } from 'react-router-dom'
 
 const AddCar = () => {
 
   const {axios, currency} = useAppContext()
+  const {id} = useParams()
 
   const [image, setImage] = useState(null)
   const [car, setCar] = useState({
     brand: '',
     model: '',
-    year: 0,
-    pricePerDay: 0,
+    year: '',
+    pricePerDay: '',
     category: '',
     transmission: '',
     fuel_type: '',
-    seating_capacity: 0,
-    location: '',
+    seating_capacity: '',
+    location: 'Waterford, Portmore',
     description: '',
   })
 
   const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(()=>{
+    if(id){
+      const fetchCar = async ()=>{
+        try {
+          const {data} = await axios.get(`/api/owner/car/${id}`)
+          if(data.success){
+            setCar(data.car)
+            // Assuming the image URL is returned as car.image and we don't re-upload it unless a new one is selected
+            // If you want to display the existing image, you'd need to set it in a way that the img tag can render it.
+            // For now, we'll just keep the existing image if no new one is uploaded.
+          }else{
+            toast.error(data.message)
+          }
+        } catch (error) {
+          toast.error(error.message)
+        }
+      }
+      fetchCar()
+    }
+  },[id])
+
   const onSubmitHandler = async (e)=>{
     e.preventDefault()
     if(isLoading) return null
@@ -30,26 +54,35 @@ const AddCar = () => {
     setIsLoading(true)
     try {
       const formData = new FormData()
-      formData.append('image', image)
+      if(image){ // Only append image if a new one is selected
+        formData.append('image', image)
+      }
       formData.append('carData', JSON.stringify(car))
 
-      const {data} = await axios.post('/api/owner/add-car', formData)
+      const url = id ? `/api/owner/update-car/${id}` : '/api/owner/add-car'
+      const method = id ? axios.put : axios.post
+
+      const {data} = await method(url, formData)
 
       if(data.success){
         toast.success(data.message)
-        setImage(null)
-        setCar({
-          brand: '',
-          model: '',
-          year: 0,
-          pricePerDay: 0,
-          category: '',
-          transmission: '',
-          fuel_type: '',
-          seating_capacity: 0,
-          location: '',
-          description: '',
-        })
+        setImage(null) // Clear image only if it was a new car or updated successfully
+        // Reset form only if it was a new car submission
+        if(!id){
+            setCar({
+                brand: '',
+                model: '',
+                year: '',
+                pricePerDay: '',
+                category: '',
+                transmission: '',
+                fuel_type: '',
+                seating_capacity: '',
+                location: 'Waterford, Portmore',
+                description: '',
+            })
+        }
+
       }else{
         toast.error(data.message)
       }
@@ -63,17 +96,17 @@ const AddCar = () => {
   return (
     <div className='px-4 py-10 md:px-10 flex-1'>
 
-      <Title title="Add New Car" subTitle="Fill in details to list a new car for booking, including pricing, availability, and car specifications."/>
+      <Title title={id ? "Update Car" : "Add New Car"} subTitle={id ? "Edit car details and save your changes." : "Fill in details to list a new car for booking, including pricing, availability, and car specifications."}/>
 
       <form onSubmit={onSubmitHandler} className='flex flex-col gap-5 text-gray-500 text-sm mt-6 max-w-xl'>
 
         {/* Car Image */}
         <div className='flex items-center gap-2 w-full'>
           <label htmlFor="car-image">
-            <img src={image ? URL.createObjectURL(image) : assets.upload_icon} alt="" className='h-14 rounded cursor-pointer'/>
+            <img src={image ? URL.createObjectURL(image) : (car.image || assets.upload_icon)} alt="" className='h-14 rounded cursor-pointer'/>
             <input type="file" id="car-image" accept="image/*" hidden onChange={e=> setImage(e.target.files[0])}/>
           </label>
-          <p className='text-sm text-gray-500'>Upload a picture of your car</p>
+          <p className='text-sm text-gray-500'>{id ? "Update car image" : "Upload a picture of your car"}</p>
         </div>
 
         {/* Car Brand & Model */}
@@ -143,10 +176,7 @@ const AddCar = () => {
             <label>Location</label>
             <select onChange={e=> setCar({...car, location: e.target.value})} value={car.location} className='px-3 py-2 mt-1 border border-borderColor rounded-md outline-none'>
               <option value="">Select a location</option>
-              <option value="New York">New York</option>
-              <option value="Los Angeles">Los Angeles</option>
-              <option value="Houston">Houston</option>
-              <option value="Chicago">Chicago</option>
+              <option value="Waterford, Portmore">Waterford, Portmore</option>
             </select>
          </div>
         {/* Car Description */}
@@ -157,7 +187,7 @@ const AddCar = () => {
 
         <button className='flex items-center gap-2 px-4 py-2.5 mt-4 bg-primary text-white rounded-md font-medium w-max cursor-pointer'>
           <img src={assets.tick_icon} alt="" />
-          {isLoading ? 'Listing...' : 'List Your Car'}
+          {isLoading ? (id ? 'Updating...' : 'Listing...') : (id ? 'Update Car' : 'List Your Car')}
         </button>
 
 

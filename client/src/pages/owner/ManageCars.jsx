@@ -3,10 +3,12 @@ import { assets} from '../../assets/assets'
 import Title from '../../components/owner/Title'
 import { useAppContext } from '../../context/AppContext'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 const ManageCars = () => {
 
   const {isOwner, axios, currency} = useAppContext()
+  const navigate = useNavigate()
 
   const [cars, setCars] = useState([])
 
@@ -79,7 +81,7 @@ const ManageCars = () => {
           </thead>
           <tbody>
             {cars.map((car, index)=>(
-              <tr key={index} className='border-t border-borderColor'>
+              <tr key={index} className='border-t border-borderColor cursor-pointer' onClick={()=> navigate(`/owner/add-car/${car._id}`)}>
 
                 <td className='p-3 flex items-center gap-3'>
                   <img src={car.image} alt="" className="h-12 w-12 aspect-square rounded-md object-cover"/>

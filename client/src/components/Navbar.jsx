@@ -82,7 +82,7 @@ const Navbar = () => {
                 </div>
                 <div>
                     <p className='text-gray-500 text-sm'>Need help?</p>
-                    <p className='font-medium'>+1 876-555-1234</p>
+                    <p className='font-medium'>+1 876-227-2810</p>
                 </div>
             </div>
             <button onClick={()=> {user ? logout() : setShowLogin(true)}} className="cursor-pointer px-8 py-2 bg-indigo-600 hover:bg-indigo-700 transition-all text-white rounded-lg">{user ? 'Logout' : 'Login'}</button>
@@ -114,7 +114,7 @@ const Navbar = () => {
           {/* Phone Section */}
           <div className="flex items-center gap-2">
             <Phone size={16} className="text-white flex-shrink-0" />
-            <span>+996 247-1680</span>
+            <span>+1 876 457-6184</span>
           </div>
 
           {/* Location Section */}

@@ -185,22 +185,30 @@ const PaymentPage = () => {
               >
                 <h4 className="text-lg font-bold text-gray-800 mb-4">Please transfer the amount to the following bank details:</h4>
                 <div className="space-y-3 text-gray-700">
-                  <div>
-                    <p className="font-medium">Account Holder Name:</p>
-                    <p>LA Car Rentals LTD</p>
-                  </div>
-                  <div>
-                    <p className="font-medium">Bank Name:</p>
-                    <p>First National Bank</p>
-                  </div>
-                  <div>
-                    <p className="font-medium">Branch:</p>
-                    <p>Main Street Branch</p>
-                  </div>
-                  <div>
-                    <p className="font-medium">Account Number:</p>
-                    <p>1234567890</p>
-                  </div>
+                  {user.accountHolderName && (
+                    <div>
+                      <p className="font-medium">Account Holder Name:</p>
+                      <p>{user.accountHolderName}</p>
+                    </div>
+                  )}
+                  {user.bankName && (
+                    <div>
+                      <p className="font-medium">Bank Name:</p>
+                      <p>{user.bankName}</p>
+                    </div>
+                  )}
+                  {user.branch && (
+                    <div>
+                      <p className="font-medium">Branch:</p>
+                      <p>{user.branch}</p>
+                    </div>
+                  )}
+                  {user.accountNumber && (
+                    <div>
+                      <p className="font-medium">Account Number:</p>
+                      <p>{user.accountNumber}</p>
+                    </div>
+                  )}
                   <p className="text-sm text-red-500 mt-4">Please note: Your booking will be confirmed upon successful verification of the cash deposit.</p>
                 </div>
               </motion.div>

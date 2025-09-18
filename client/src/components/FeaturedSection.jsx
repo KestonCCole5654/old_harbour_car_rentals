@@ -30,7 +30,7 @@ const FeaturedSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.3 }}
-                className='text-indigo-600 font-medium cursor-pointer flex items-center gap-2'
+                className='text-indigo-600 font-medium cursor-pointer flex items-center gap-2 whitespace-nowrap'
                 onClick={() => navigate('/cars')}
             >
                 View All <img src={assets.arrow_icon} alt="arrow" className='w-4 h-4'/>

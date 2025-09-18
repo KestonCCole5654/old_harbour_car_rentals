@@ -182,4 +182,98 @@ export const updateUserImage = async (req, res)=>{
         console.log(error.message);
         res.json({success: false, message: error.message})
     }
-}   
+}
+
+// API to Get Car By ID for Owner
+export const getCarById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const car = await Car.findById(id);
+        if (!car) {
+            return res.json({ success: false, message: "Car not found" });
+        }
+        res.json({ success: true, car });
+    } catch (error) {
+        console.log(error.message);
+        res.json({ success: false, message: error.message });
+    }
+};
+
+// API to Update Car
+export const updateCar = async (req, res) => {
+    try {
+        const { _id } = req.user; // Owner ID
+        const { id } = req.params; // Car ID from URL
+        let carData = JSON.parse(req.body.carData);
+        const imageFile = req.file; // New image file if uploaded
+
+        let car = await Car.findById(id);
+
+        if (!car) {
+            return res.json({ success: false, message: "Car not found" });
+        }
+
+        // Ensure the car belongs to the owner trying to update it
+        if (car.owner.toString() !== _id.toString()) {
+            return res.json({ success: false, message: "Unauthorized to update this car" });
+        }
+
+        // Update image if a new one is provided
+        if (imageFile) {
+            const fileBuffer = fs.readFileSync(imageFile.path);
+            const response = await imagekit.upload({
+                file: fileBuffer,
+                fileName: imageFile.originalname,
+                folder: '/cars'
+            });
+            var optimizedImageUrl = imagekit.url({
+                path: response.filePath,
+                transformation: [
+                    { width: '1280' },
+                    { quality: 'auto' },
+                    { format: 'webp' }
+                ]
+            });
+            carData.image = optimizedImageUrl; // Update carData with new image URL
+        } else {
+            // If no new image, retain the existing one. No need to set carData.image as it's already on the car object.
+        }
+
+        // Update car fields
+        Object.assign(car, carData);
+        await car.save();
+
+        res.json({ success: true, message: "Car Updated Successfully" });
+
+    } catch (error) {
+        console.log(error.message);
+        res.json({ success: false, message: error.message });
+    }
+};
+
+// API to Update Owner Bank Details
+export const updateBankDetails = async (req, res) => {
+    try {
+        const { _id, role } = req.user; // Authenticated user (owner)
+
+        if (role !== 'owner') {
+            return res.json({ success: false, message: "Unauthorized" });
+        }
+
+        const { bankName, accountHolderName, branch, accountNumber, accountType } = req.body;
+
+        await User.findByIdAndUpdate(_id, {
+            bankName,
+            accountHolderName,
+            branch,
+            accountNumber,
+            accountType,
+        });
+
+        res.json({ success: true, message: "Bank Details Updated Successfully" });
+
+    } catch (error) {
+        console.log(error.message);
+        res.json({ success: false, message: error.message });
+    }
+};   

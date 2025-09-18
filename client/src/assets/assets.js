@@ -19,6 +19,8 @@ import addIconColored from "./addIconColored.svg"
 import listIcon from "./listIcon.svg"
 import listIconColored from "./listIconColored.svg"
 import cautionIconColored from "./cautionIconColored.svg"
+import bankIcon from "./addIcon.svg" // Reusing addIcon as placeholder
+import bankIconColored from "./addIconColored.svg" // Reusing addIconColored as placeholder
 import arrow_icon from "./arrow_icon.svg"
 import star_icon from "./star_icon.svg"
 import check_icon from "./check_icon.svg"
@@ -120,6 +122,7 @@ export const ownerMenuLinks = [
     { name: "Add car", path: "/owner/add-car", icon: addIcon, coloredIcon: addIconColored },
     { name: "Manage Cars", path: "/owner/manage-cars", icon: carIcon, coloredIcon: carIconColored },
     { name: "Manage Bookings", path: "/owner/manage-bookings", icon: listIcon, coloredIcon: listIconColored },
+    { name: "Bank Details", path: "/owner/bank-details", icon: bankIcon, coloredIcon: bankIconColored }, // New Bank Details link
 ]
 
 export const dummyUserData = {

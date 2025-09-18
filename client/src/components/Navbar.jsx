@@ -204,6 +204,19 @@ const Navbar = () => {
 
                     {/* Mobile Action Buttons */}
                     <div className="flex flex-col gap-3">
+                        {/* Admin Button - Always visible, disabled if not admin */}
+                        <button 
+                            onClick={isAdmin ? handleAdminAction : () => toast.error('Admin access required')}
+                            disabled={!isAdmin}
+                            className={`w-full py-3 transition-colors rounded-lg font-medium ${
+                                isAdmin 
+                                    ? 'bg-green-600 hover:bg-green-700 text-white cursor-pointer' 
+                                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                            }`}
+                        >
+                            {isAdmin ? (isOwner ? 'Dashboard' : 'List Cars') : 'Admin Access Required'}
+                        </button>
+
                         {/* Login/Logout Button */}
                         <button 
                             onClick={handleAuthAction}
@@ -211,16 +224,6 @@ const Navbar = () => {
                         >
                             {user ? 'Logout' : 'Login'}
                         </button>
-
-                        {/* Admin Button - Only show if user is logged in AND is admin */}
-                        {user && isAdmin && (
-                            <button 
-                                onClick={handleAdminAction}
-                                className="w-full py-3 bg-green-600 hover:bg-green-700 transition-colors text-white rounded-lg font-medium"
-                            >
-                                {isOwner ? 'Dashboard' : 'List Cars'}
-                            </button>
-                        )}
                     </div>
                 </div>
             </div>

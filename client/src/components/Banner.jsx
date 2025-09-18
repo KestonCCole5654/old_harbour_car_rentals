@@ -28,8 +28,7 @@ const Banner = () => {
       <div className="text-white max-w-lg relative z-10">
         <h2 className="text-4xl font-semibold leading-tight">Enjoy every mile with adorable companionship.</h2>
         <p className="mt-4 text-sm">
-          Amet cras hac orci lacus. Faucibus ipsum arcu lectus nibh sapien bibendum ullamcorper in. Diam tincidunt
-          tincidunt erat
+        Your journey begins here. Discover the perfect car for your next adventure with our seamless booking experience.
         </p>
         <div className="flex items-center mt-6 w-full h-full  rounded-full p-1 max-w-[340px]">
           <motion.button

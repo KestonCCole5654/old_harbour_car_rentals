@@ -11,24 +11,24 @@ const AboutUs = () => {
 
     const faqs = [
         {
-            question: "How does it works?",
-            answer: "Imperdiet ut tristique viverra nunc. Ultrices orci vel auctor cursus turpis nibh placerat massa. Fermentum urna ut at et in. Faucibus ut integer tristique ut. Pellentesque id nibh sed nulla non nulla"
+            question: "How does it work?",
+            answer: "After meeting the rental requirements, you’ll come in to inspect the vehicle and sign the contract. Drop-off is available at an additional expense depending on the location."
         },
         {
             question: "Can I rent a car without a credit card?",
-            answer: "Imperdiet ut tristique viverra nunc. Ultrices orci vel auctor cursus turpis nibh placerat massa. Fermentum urna ut at et in. Faucibus ut integer tristique ut. Pellentesque id nibh sed nulla non nulla"
+            answer: "Yes, you can rent a car without a credit card. Payment can be made on the spot, or by direct bank transfer with given details"
         },
         {
             question: "What are the requirements for renting a car?",
-            answer: "Imperdiet ut tristique viverra nunc. Ultrices orci vel auctor cursus turpis nibh placerat massa. Fermentum urna ut at et in. Faucibus ut integer tristique ut. Pellentesque id nibh sed nulla non nulla"
+            answer: "Ensure you meet booking requirements (e.g., valid driver's license for 2+ years, 23+ years old, Work ID, Passport, Proof of address (utility bill)). Optionally upload documents now or bring them at pickup. Please note that not all applications will be accepted upon vetting"
         },
         {
             question: "Does Car Rental allow me to tow with or attach a hitch to the rental vehicle?",
-            answer: "Imperdiet ut tristique viverra nunc. Ultrices orci vel auctor cursus turpis nibh placerat massa. Fermentum urna ut at et in. Faucibus ut integer tristique ut. Pellentesque id nibh sed nulla non nulla"
+            answer: "No, towing or attaching a hitch to the rental vehicle is not allowed."
         },
         {
             question: "Does Car Rental offer coverage products for purchase with my rental?",
-            answer: "Imperdiet ut tristique viverra nunc. Ultrices orci vel auctor cursus turpis nibh placerat massa. Fermentum urna ut at et in. Faucibus ut integer tristique ut. Pellentesque id nibh sed nulla non nulla"
+            answer: "No, rentals are only covered under proper coverage products which is the car, any additional coverage is not offered."
         },
     ]
 
@@ -57,35 +57,45 @@ const AboutUs = () => {
           {/* Right Section - Features */}
           <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
             <div>
-              <h3 className='text-xl font-semibold text-gray-800 mb-2'>Variety Brands</h3>
+              <h3 className='text-xl font-semibold text-gray-800 mb-2'>Wide Selection of Vehicles</h3>
               <p className='text-gray-600 text-sm'>
-                Plateo non auctor fermentum sollicitudin. Eget adipiscing augue sit quam natoque ornare cursus viverra odio
+                LA Car Rental LTD offers a diverse fleet of vehicles, from compact cars to luxury SUVs, ensuring you find the perfect ride for any occasion or need.
               </p>
             </div>
             <div>
-              <h3 className='text-xl font-semibold text-gray-800 mb-2'>Awesome Suport</h3>
+              <h3 className='text-xl font-semibold text-gray-800 mb-2'>Exceptional Customer Support</h3>
               <p className='text-gray-600 text-sm'>
-                Eget adipiscing augue sit quam natoque ornare cursus viverra odio. Etiam quam gravida ultricies velit
+                Our friendly and knowledgeable team is dedicated to providing outstanding service, answering your questions, and making your rental experience smooth from start to finish.
               </p>
             </div>
             <div>
               <h3 className='text-xl font-semibold text-gray-800 mb-2'>Maximum Freedom</h3>
               <p className='text-gray-600 text-sm'>
-                Diam quam gravida ultricies velit duis consequat integer. Est aliquam posuere vel rhoncus massa volutpat in
+                Enjoy the freedom to explore Jamaica at your own pace. With flexible rental terms and convenient pick-up and drop-off options, you’re always in control of your journey.
               </p>
             </div>
             <div>
-              <h3 className='text-xl font-semibold text-gray-800 mb-2'>Flexibility On The Go</h3>
+              <h3 className='text-xl font-semibold text-gray-800 mb-2'>Flexible & Convenient</h3>
               <p className='text-gray-600 text-sm'>
-                Vitae pretium nulla sed quam id nisl semper. Vel non in proin egestas dis faucibus rhoncus. Iaculis dignissim aenean pellentesque nisi
+                We make car rental easy and hassle-free, offering flexible payment options and the ability to reserve online or in person. LA Car Rental LTD adapts to your schedule and needs.
               </p>
             </div>
           </div>
         </div>
       </div>
 
+    
+
       {/* Testimonials Section */}
       <Testimonial />
+
+        {/* Location Map */}
+        <div className='max-w-6xl mx-auto py-16 px-6 lg:px-10 text-center'>
+        <h2 className='text-3xl font-bold text-gray-800 mb-8'>Our Location</h2>
+        <div className='aspect-w-16 aspect-h-9 w-full rounded-lg overflow-hidden shadow-lg'>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3794.8396893820336!2d-76.8687514!3d17.9861939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8edb158db3e63323%3A0xa650e4b256db4227!2sLA%20Car%20Rentals%20LTD.!5e0!3m2!1sen!2sjm!4v1758213266950!5m2!1sen!2sjm" width="100%" height="450" style={{ border: "0" }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
 
       {/* FAQ Section */}
       <div className='max-w-6xl mx-auto py-16 px-6 lg:px-10'>
@@ -110,6 +120,8 @@ const AboutUs = () => {
         </div>
 
       </div>
+
+      
 
       <CallToActionBanner />
 

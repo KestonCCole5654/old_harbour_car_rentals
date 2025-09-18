@@ -4,6 +4,7 @@ import FeaturesSection from '../components/FeaturesSection'
 import BrandLogosBanner from '../components/BrandLogosBanner'
 import StepsSection from '../components/StepsSection'
 import FeaturedSection from '../components/FeaturedSection'
+import CarSourcingBanner from '../components/CarSourcingBanner'
 import Banner from '../components/Banner'
 import Testimonial from '../components/Testimonial'
 import ContactInfoSection from '../components/ContactInfoSection'
@@ -14,10 +15,10 @@ const Home = () => {
     <>
       <Hero />
       <FeaturesSection />
-    
+      
       <StepsSection />
       <FeaturedSection />
-    
+      <CarSourcingBanner />
       <Testimonial />
       <Banner />
       <ContactInfoSection />

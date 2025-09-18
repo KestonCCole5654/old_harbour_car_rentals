@@ -5,7 +5,7 @@ import toast from 'react-hot-toast'
 
 const BankDetails = () => {
 
-  const { axios, user } = useAppContext()
+  const { axios, user, fetchUser } = useAppContext()
 
   const [bankDetails, setBankDetails] = useState({
     bankName: '',
@@ -38,6 +38,7 @@ const BankDetails = () => {
       const { data } = await axios.put('/api/owner/bank-details', bankDetails)
       if (data.success) {
         toast.success(data.message)
+        fetchUser() // Refresh user data after successful update
       } else {
         toast.error(data.message)
       }

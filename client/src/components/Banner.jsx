@@ -31,21 +31,17 @@ const Banner = () => {
           Amet cras hac orci lacus. Faucibus ipsum arcu lectus nibh sapien bibendum ullamcorper in. Diam tincidunt
           tincidunt erat
         </p>
-        <div className="flex items-center mt-6 w-full bg-white rounded-full p-1 max-w-[340px]">
-          <input
-            type="text"
-            placeholder="City"
-            className="p-2 rounded-l-full flex-grow text-gray-800 outline-none px-4"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
+        <div className="flex items-center mt-6 w-full h-full  rounded-full p-1 max-w-[340px]">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-10 h-10 bg-orange-500 hover:bg-orange-600 text-white rounded-full flex items-center justify-center cursor-pointer"
-            onClick={handleSearch}
+            className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-full flex items-center justify-center cursor-pointer font-semibold w-full"
+            onClick={() => {
+              navigate('/cars');
+              scrollTo(0, 0);
+            }}
           >
-            <img src={assets.search_icon} alt="Search" className='w-5 h-5 brightness-0 invert'/>
+            Book Now
           </motion.button>
         </div>
       </div>

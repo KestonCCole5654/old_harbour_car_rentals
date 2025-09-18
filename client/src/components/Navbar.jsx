@@ -100,7 +100,7 @@ const Navbar = () => {
           {/* Email Section */}
           <div className="flex items-center gap-2">
             <img src={assets.gmail_logo || "/placeholder.svg"} alt="Email" className="w-4 h-4 brightness-0 invert" />
-            <span className="truncate">{user ? user.email : "info@example.com"}</span>
+            <span className="truncate">{user ? user.email : "Lacars2021@gmail.com"}</span>
           </div>
 
           {/* Social Media Section */}

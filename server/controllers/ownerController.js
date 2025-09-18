@@ -276,4 +276,29 @@ export const updateBankDetails = async (req, res) => {
         console.log(error.message);
         res.json({ success: false, message: error.message });
     }
+};
+
+// API to Delete Owner Bank Details
+export const deleteBankDetails = async (req, res) => {
+    try {
+        const { _id, role } = req.user; // Authenticated user (owner)
+
+        if (role !== 'owner') {
+            return res.json({ success: false, message: "Unauthorized" });
+        }
+
+        await User.findByIdAndUpdate(_id, {
+            bankName: null,
+            accountHolderName: null,
+            branch: null,
+            accountNumber: null,
+            accountType: null,
+        });
+
+        res.json({ success: true, message: "Bank Details Deleted Successfully" });
+
+    } catch (error) {
+        console.log(error.message);
+        res.json({ success: false, message: error.message });
+    }
 };   

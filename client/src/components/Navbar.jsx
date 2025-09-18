@@ -204,20 +204,23 @@ const Navbar = () => {
 
                     {/* Mobile Action Buttons */}
                     <div className="flex flex-col gap-3">
+                        {/* Admin Button - Show first if user is admin */}
+                        {isAdmin && (
+                            <button 
+                                onClick={handleAdminAction}
+                                className="w-full py-3 bg-green-600 hover:bg-green-700 transition-colors text-white rounded-lg font-medium"
+                            >
+                                {isOwner ? 'Dashboard' : 'List Cars'}
+                            </button>
+                        )}
+                        
+                        {/* Auth Button */}
                         <button 
                             onClick={handleAuthAction}
                             className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 transition-colors text-white rounded-lg font-medium"
                         >
                             {user ? 'Logout' : 'Login'}
                         </button>
-                        {isAdmin && (
-                            <button 
-                                onClick={handleAdminAction}
-                                className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 transition-colors text-white rounded-lg font-medium"
-                            >
-                                {isOwner ? 'Dashboard' : 'List Cars'}
-                            </button>
-                        )}
                     </div>
                 </div>
             </div>

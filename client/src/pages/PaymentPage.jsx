@@ -200,26 +200,36 @@ const PaymentPage = () => {
               >
                 <h4 className="text-lg font-bold text-gray-800 mb-4">Please transfer the amount to the following bank details:</h4>
                 <div className="space-y-3 text-gray-700">
-                  <div>
-                    <p className="font-medium">Account Holder Name:</p>
-                    <p>{publicBankDetails.accountHolderName}</p>
-                  </div>
-                  <div>
-                    <p className="font-medium">Bank Name:</p>
-                    <p>{publicBankDetails.bankName}</p>
-                  </div>
-                  <div>
-                    <p className="font-medium">Branch:</p>
-                    <p>{publicBankDetails.branch}</p>
-                  </div>
-                  <div>
-                    <p className="font-medium">Account Number:</p>
-                    <p>{publicBankDetails.accountNumber}</p>
-                  </div>
-                  <div>
-                    <p className="font-medium">Account Type:</p>
-                    <p>{publicBankDetails.accountType}</p>
-                  </div>
+                  {publicBankDetails.accountHolderName && (
+                    <div>
+                      <p className="font-medium">Account Holder Name:</p>
+                      <p>{publicBankDetails.accountHolderName}</p>
+                    </div>
+                  )}
+                  {publicBankDetails.bankName && (
+                    <div>
+                      <p className="font-medium">Bank Name:</p>
+                      <p>{publicBankDetails.bankName}</p>
+                    </div>
+                  )}
+                  {publicBankDetails.branch && (
+                    <div>
+                      <p className="font-medium">Branch:</p>
+                      <p>{publicBankDetails.branch}</p>
+                    </div>
+                  )}
+                  {publicBankDetails.accountNumber && (
+                    <div>
+                      <p className="font-medium">Account Number:</p>
+                      <p>{publicBankDetails.accountNumber}</p>
+                    </div>
+                  )}
+                  {publicBankDetails.accountType && (
+                    <div>
+                      <p className="font-medium">Account Type:</p>
+                      <p>{publicBankDetails.accountType}</p>
+                    </div>
+                  )}
                   <p className="text-sm text-red-500 mt-4">Please note: Your booking will be confirmed upon successful verification of the cash deposit.</p>
                 </div>
               </motion.div>

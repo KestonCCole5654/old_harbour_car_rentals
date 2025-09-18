@@ -28,6 +28,8 @@ const Navbar = () => {
         }
     }
 
+    const isAdmin = user && user.email === import.meta.env.VITE_ADMIN_EMAIL;
+
   return (
     <motion.div>
     <motion.div
@@ -61,7 +63,9 @@ const Navbar = () => {
             {/* Mobile Help and Login/Logout Button */}
             <div className='flex flex-col items-start gap-6 w-full'>
                 <button onClick={()=> {user ? logout() : setShowLogin(true)}} className="cursor-pointer px-8 py-2 bg-indigo-600 hover:bg-indigo-700 transition-all text-white rounded-lg w-full text-left">{user ? 'Logout' : 'Login'}</button>
-                <button onClick={()=> isOwner ? navigate('/owner') : changeRole()} className="cursor-pointer px-8 py-2 bg-indigo-600 hover:bg-indigo-700 transition-all text-white rounded-lg w-full text-left">{isOwner ? 'Dashboard' : 'List cars'}</button>
+                {isAdmin && (
+                  <button onClick={()=> isOwner ? navigate('/owner') : changeRole()} className="cursor-pointer px-8 py-2 bg-indigo-600 hover:bg-indigo-700 transition-all text-white rounded-lg w-full text-left">{isOwner ? 'Dashboard' : 'List cars'}</button>
+                )}
                 <div className='flex items-center gap-3 w-full py-2'>
                     <div className='bg-indigo-600 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0'>
                         <Phone size={20} className='text-white' />
@@ -86,7 +90,9 @@ const Navbar = () => {
                 </div>
             </div>
             <button onClick={()=> {user ? logout() : setShowLogin(true)}} className="cursor-pointer px-8 py-2 bg-indigo-600 hover:bg-indigo-700 transition-all text-white rounded-lg">{user ? 'Logout' : 'Login'}</button>
-            <button onClick={()=> isOwner ? navigate('/owner') : changeRole()} className="cursor-pointer px-8 py-2 bg-indigo-600 hover:bg-indigo-700 transition-all text-white rounded-lg">{isOwner ? 'Dashboard' : 'List cars'}</button>
+            {isAdmin && (
+              <button onClick={()=> isOwner ? navigate('/owner') : changeRole()} className="cursor-pointer px-8 py-2 bg-indigo-600 hover:bg-indigo-700 transition-all text-white rounded-lg">{isOwner ? 'Dashboard' : 'List cars'}</button>
+            )}
             
         </div>
 

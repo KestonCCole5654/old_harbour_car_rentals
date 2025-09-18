@@ -1,0 +1,41 @@
+# Logs
+logs
+*.log
+pm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Caching directories
+.parcel-cache/
+.next/
+.nuxt/
+.vuepress/
+.cache/
+.gatsby/
+.pnp/
+.pnp.js
+
+# Compiled output
+build/
+dist/
+out/
+
+# Environments
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Local machine config
+.idea/
+.vscode/
+*.iml
+
+# misc
+*.DS_Store
+thumb.db

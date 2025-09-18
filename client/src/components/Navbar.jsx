@@ -28,7 +28,7 @@ const Navbar = () => {
         }
     }
 
-    const isAdmin = user && user.email && user.email.toLowerCase() === import.meta.env.VITE_ADMIN_EMAIL.toLowerCase();
+    const isAdmin = user && user.email === import.meta.env.VITE_ADMIN_EMAIL;
 
   return (
     <motion.div>

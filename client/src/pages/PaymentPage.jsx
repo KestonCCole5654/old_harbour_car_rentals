@@ -240,7 +240,7 @@ const PaymentPage = () => {
 
       <button
         onClick={handleConfirmBooking}
-        disabled={!selectedPaymentMethod || isBooking}
+        disabled={!selectedPaymentMethod || isBooking || (selectedPaymentMethod === 'cash_deposit' && !publicBankDetails)}
         className="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors w-full disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isBooking ? 'Confirming...' : 'Confirm Booking'}

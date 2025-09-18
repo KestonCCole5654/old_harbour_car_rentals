@@ -301,4 +301,24 @@ export const deleteBankDetails = async (req, res) => {
         console.log(error.message);
         res.json({ success: false, message: error.message });
     }
+};
+
+// API to Get Public Bank Details (for direct cash transfer)
+export const getPublicBankDetails = async (req, res) => {
+    try {
+        // This will fetch the bank details of a predefined admin account.
+        // For a real application, you might have a dedicated settings document for public bank details.
+        const adminUser = await User.findOne({ email: process.env.VITE_ADMIN_EMAIL });
+
+        if (!adminUser || !adminUser.bankName) {
+            return res.json({ success: false, message: "Public bank details not found." });
+        }
+
+        const { bankName, accountHolderName, branch, accountNumber, accountType } = adminUser;
+        res.json({ success: true, bankDetails: { bankName, accountHolderName, branch, accountNumber, accountType } });
+
+    } catch (error) {
+        console.log(error.message);
+        res.json({ success: false, message: error.message });
+    }
 };   

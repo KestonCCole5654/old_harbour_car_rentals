@@ -15,6 +15,7 @@ const PaymentPage = () => {
   const [loading, setLoading] = useState(true)
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null)
   const [isBooking, setIsBooking] = useState(false)
+  const [publicBankDetails, setPublicBankDetails] = useState(null)
 
   useEffect(() => {
     const fetchCarDetails = async () => {
@@ -35,6 +36,20 @@ const PaymentPage = () => {
     }
     fetchCarDetails()
   }, [carId])
+
+  useEffect(() => {
+    const fetchPublicBankDetails = async () => {
+      try {
+        const { data } = await axios.get('/api/owner/public-bank-details')
+        if (data.success) {
+          setPublicBankDetails(data.bankDetails)
+        }
+      } catch (error) {
+        console.log('Error fetching public bank details:', error)
+      }
+    }
+    fetchPublicBankDetails()
+  }, [])
 
   const handleConfirmBooking = async () => {
     if (!selectedPaymentMethod) {
@@ -58,7 +73,7 @@ const PaymentPage = () => {
         pickupDate,
         returnDate,
         paymentMethod: selectedPaymentMethod,
-        // Removed bankDetails from payload as per edit hint
+        // Removed bank details from payload as per edit hint
       })
       if (data.success) {
         toast.success(data.message)
@@ -176,7 +191,7 @@ const PaymentPage = () => {
                 </div>
               </motion.div>
             )}
-            {selectedPaymentMethod === 'cash_deposit' && (
+            {selectedPaymentMethod === 'cash_deposit' && publicBankDetails && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
@@ -185,30 +200,26 @@ const PaymentPage = () => {
               >
                 <h4 className="text-lg font-bold text-gray-800 mb-4">Please transfer the amount to the following bank details:</h4>
                 <div className="space-y-3 text-gray-700">
-                  {user.accountHolderName && (
-                    <div>
-                      <p className="font-medium">Account Holder Name:</p>
-                      <p>{user.accountHolderName}</p>
-                    </div>
-                  )}
-                  {user.bankName && (
-                    <div>
-                      <p className="font-medium">Bank Name:</p>
-                      <p>{user.bankName}</p>
-                    </div>
-                  )}
-                  {user.branch && (
-                    <div>
-                      <p className="font-medium">Branch:</p>
-                      <p>{user.branch}</p>
-                    </div>
-                  )}
-                  {user.accountNumber && (
-                    <div>
-                      <p className="font-medium">Account Number:</p>
-                      <p>{user.accountNumber}</p>
-                    </div>
-                  )}
+                  <div>
+                    <p className="font-medium">Account Holder Name:</p>
+                    <p>{publicBankDetails.accountHolderName}</p>
+                  </div>
+                  <div>
+                    <p className="font-medium">Bank Name:</p>
+                    <p>{publicBankDetails.bankName}</p>
+                  </div>
+                  <div>
+                    <p className="font-medium">Branch:</p>
+                    <p>{publicBankDetails.branch}</p>
+                  </div>
+                  <div>
+                    <p className="font-medium">Account Number:</p>
+                    <p>{publicBankDetails.accountNumber}</p>
+                  </div>
+                  <div>
+                    <p className="font-medium">Account Type:</p>
+                    <p>{publicBankDetails.accountType}</p>
+                  </div>
                   <p className="text-sm text-red-500 mt-4">Please note: Your booking will be confirmed upon successful verification of the cash deposit.</p>
                 </div>
               </motion.div>

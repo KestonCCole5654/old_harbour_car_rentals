@@ -12,7 +12,7 @@ const ContactInfoSection = () => {
         </div>
         <div className='text-left'>
           <p className='text-gray-500 text-sm'>Address</p>
-          <p className='font-medium'>P.O, 392 Waterford Parkway, Waterford, Portmore</p>
+          <p className='font-medium'>392 Waterford Parkway, Waterford P.O , Portmore, St.Catherine</p>
         </div>
       </div>
 

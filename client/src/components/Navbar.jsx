@@ -54,7 +54,7 @@ const Navbar = () => {
        
 
         {/* Mobile Navigation - visible on max-sm, hidden on sm and up */}
-        <div className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-16 max-sm:border-t border-borderColor right-0 flex flex-col items-start gap-4 max-sm:p-4 transition-all duration-300 z-50 ${location.pathname === "/" ? "bg-gray-50" : "bg-white"} ${open ? "max-sm:translate-x-0" : "max-sm:translate-x-full"} sm:hidden`}>
+        <div className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-16 max-sm:border-t border-borderColor right-0 flex flex-col items-start gap-4 max-sm:p-4 transition-all duration-300 z-50 ${location.pathname === "/" ? "bg-gray-50" : "bg-white"} ${open ? "max-sm:translate-x-0" : "max-sm:translate-x-full"} sm:hidden overflow-y-auto`}>
             {menuLinks.map((link, index)=> (
                 <Link key={index} to={link.path} className='hover:text-indigo-600 transition-colors w-full py-2'>
                     {link.name}

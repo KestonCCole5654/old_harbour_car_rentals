@@ -52,8 +52,9 @@ const Navbar = () => {
 
     return (
         <div>
-            {/* Top Contact Bar - Desktop Only */}
-            <div className="bg-indigo-700 py-3 px-6 md:px-16 lg:px-24 xl:px-32 text-white hidden md:flex justify-between items-center">
+            {/* Top Contact Bar - Desktop Only 
+
+              <div className="bg-indigo-700 py-3 px-6 md:px-16 lg:px-24 xl:px-32 text-white hidden md:flex justify-between items-center">
                 <div className="flex items-center gap-6">
                     <div className="flex items-center gap-2">
                         <img src={assets.gmail_logo || "/placeholder.svg"} alt="Email" className="w-4 h-4 brightness-0 invert" />
@@ -79,6 +80,9 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+            
+            */}
+          
 
             {/* Main Navbar */}
             <motion.nav

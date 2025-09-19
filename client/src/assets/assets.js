@@ -46,12 +46,7 @@ import tire_track from "./tire_track.png"
 import process_image from "./banner_car_image.png"
 import car_icon_banner from "./car_icon.svg"
 import quote_icon from "./quote_icon.svg"
-import toyota_logo from "./logo.svg"
-import ford_logo from "./logo.svg"
-import mercedes_logo from "./logo.svg"
-import jeep_logo from "./logo.svg"
-import bmw_logo from "./logo.svg"
-import audi_logo from "./logo.svg"
+
 
 export const cityList = ['New York', 'Los Angeles', 'Houston', 'Chicago']
 

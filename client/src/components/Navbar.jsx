@@ -7,23 +7,19 @@ import {motion} from 'framer-motion'
 import { Phone } from 'lucide-react'
 
 const Navbar = () => {
+
     const {setShowLogin, user, logout, isOwner, axios, setIsOwner} = useAppContext()
+
     const location = useLocation()
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const [open, setOpen] = useState(false)
     const navigate = useNavigate()
 
-    const changeRole = async () => {
-        try {
-            const { data } = await axios.post('/api/owner/change-role')
-            if (data.success) {
-                setIsOwner(true)
-                toast.success(data.message)
-            } else {
-                toast.error(data.message)
-            }
-        } catch (error) {
-            toast.error(error.message)
-        }
+    const changeRole = async ()=>{
+      // This function's purpose needs to be re-evaluated.
+      // If it's meant for a user to *request* to become an owner, that's a different flow.
+      // For now, if a non-owner sees 'List cars' and clicks it, they should be redirected to home.
+      navigate('/'); // Redirect to home if a non-owner somehow clicks this.
+      toast.error("Only owners can list cars. Please login as an owner or create an owner account.");
     }
 
     const isAdmin = user && user.email === import.meta.env.VITE_ADMIN_EMAIL
@@ -34,7 +30,7 @@ const Navbar = () => {
         } else {
             setShowLogin(true)
         }
-        setMobileMenuOpen(false) // Close mobile menu after action
+        setOpen(false) // Close mobile menu after action
     }
 
     const handleAdminAction = () => {
@@ -43,190 +39,51 @@ const Navbar = () => {
         } else {
             changeRole()
         }
-        setMobileMenuOpen(false) // Close mobile menu after action
+        setOpen(false) // Close mobile menu after action
     }
 
     const closeMobileMenu = () => {
-        setMobileMenuOpen(false)
+        setOpen(false)
     }
 
-    return (
-        <div>
-            {/* Top Contact Bar - Desktop Only 
+  return (
+    <motion.div 
+    initial={{y: -20, opacity: 0}}
+    animate={{y: 0, opacity: 1}}
+    transition={{duration: 0.5}}
+    className={`flex items-center justify-between px-6  md:px-16 lg:px-24 xl:px-32 py-4 text-gray-600 border-b border-borderColor relative transition-all ${location.pathname === "/" && "bg-light"}`}>
 
-              <div className="bg-indigo-700 py-3 px-6 md:px-16 lg:px-24 xl:px-32 text-white hidden md:flex justify-between items-center">
-                <div className="flex items-center gap-6">
-                    <div className="flex items-center gap-2">
-                        <img src={assets.gmail_logo || "/placeholder.svg"} alt="Email" className="w-4 h-4 brightness-0 invert" />
-                        <span className="truncate">Lacars2021@gmail.com</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <img src={assets.facebook_logo} alt="Facebook" className="w-4 h-4 brightness-0 invert"/>
-                        <img src={assets.instagram_logo} alt="Instagram" className="w-4 h-4 brightness-0 invert"/>
-                    </div>
-                </div>
-                <div className="flex items-center gap-6">
-                    <div className="flex items-center gap-2">
-                        <Phone size={16} className="text-white flex-shrink-0" />
-                        <span>+1 876 457-6184</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <img
-                            src={assets.location_icon_colored || "/placeholder.svg"}
-                            alt="Location"
-                            className="w-4 h-4 brightness-0 invert flex-shrink-0"
-                        />
-                        <span className="text-xs lg:text-sm">392 Waterford Parkway, Waterford, Portmore</span>
-                    </div>
-                </div>
-            </div>
-            
-            */}
-          
+        <Link to='/'>
+            <motion.img whileHover={{scale: 1.05}} src={assets.logo} alt="logo"  className="h-12"/>
+        </Link>
 
-            {/* Main Navbar */}
-            <motion.nav
-                initial={{y: -20, opacity: 0}}
-                animate={{y: 0, opacity: 1}}
-                transition={{duration: 0.5}}
-                className={`flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 text-gray-600 border-b border-borderColor relative ${location.pathname === "/" ? "bg-transparent" : "bg-white"}`}
-            >
-                {/* Logo */}
-                <Link to='/' onClick={closeMobileMenu}>
-                    <motion.img 
-                        whileHover={{scale: 1.05}} 
-                        src={assets.logo} 
-                        alt="logo" 
-                        className="h-16"
-                    />
+        <div className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-16 max-sm:border-t border-borderColor right-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 max-sm:p-4 transition-all duration-300 z-50 ${location.pathname === "/" ? "bg-light" : "bg-white"} ${open ? "max-sm:translate-x-0" : "max-sm:translate-x-full"}`}>
+            {menuLinks.map((link, index)=> (
+                <Link key={index} to={link.path}>
+                    {link.name}
                 </Link>
+            ))}
 
-                {/* Desktop Navigation */}
-                <div className='hidden md:flex items-center gap-8'>
-                    {menuLinks.map((link, index) => (
-                        <Link 
-                            key={index} 
-                            to={link.path} 
-                            className='hover:text-indigo-600 transition-colors'
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
-                </div>
+            <div className='hidden lg:flex items-center text-sm gap-2 border border-borderColor px-3 rounded-full max-w-56'>
+                <input type="text" className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500" placeholder="Search cars"/>
+                <img src={assets.search_icon} alt="search" />
+            </div>
 
-                {/* Desktop Actions */}
-                <div className='hidden md:flex items-center gap-4'>
-                    <div className='flex items-center gap-3'>
-                        <div className='bg-indigo-600 rounded-full w-10 h-10 flex items-center justify-center'>
-                            <Phone size={20} className='text-white' />
-                        </div>
-                        <div>
-                            <p className='text-gray-500 text-sm'>Need help?</p>
-                            <p className='font-medium'>+1 876-227-2810</p>
-                        </div>
-                    </div>
-                    <button 
-                        onClick={handleAuthAction}
-                        className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 transition-colors text-white rounded-lg"
-                    >
-                        {user ? 'Logout' : 'Login'}
-                    </button>
-                    {isAdmin && (
-                        <button 
-                            onClick={handleAdminAction}
-                            className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 transition-colors text-white rounded-lg"
-                        >
-                            {isOwner ? 'Dashboard' : 'List Cars'}
-                        </button>
-                    )}
-                </div>
+            <div className='flex max-sm:flex-col items-start sm:items-center gap-6'>
+                {isOwner && (
+                    <button onClick={()=> navigate('/owner')} className="cursor-pointer">Dashboard</button>
+                )}
 
-                {/* Mobile Menu Button */}
-                <button 
-                    className='md:hidden p-2'
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    aria-label="Toggle menu"
-                >
-                    <img 
-                        src={mobileMenuOpen ? assets.close_icon : assets.menu_icon} 
-                        alt="menu" 
-                        className="w-6 h-6"
-                    />
-                </button>
-            </motion.nav>
-
-            {/* Mobile Menu Overlay */}
-            {mobileMenuOpen && (
-                <div 
-                    className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
-                    onClick={closeMobileMenu}
-                />
-            )}
-
-            {/* Mobile Menu */}
-            <div className={`
-                fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-white z-50 transform transition-transform duration-300 ease-in-out md:hidden
-                ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}
-            `}>
-                <div className="p-6">
-                    {/* Mobile Menu Header */}
-                    <div className="flex justify-between items-center mb-8">
-                        <h2 className="text-xl font-semibold text-gray-800">Menu</h2>
-                        <button 
-                            onClick={closeMobileMenu}
-                            className="p-2"
-                            aria-label="Close menu"
-                        >
-                            <img src={assets.close_icon} alt="close" className="w-6 h-6" />
-                        </button>
-                    </div>
-
-                    {/* Mobile Menu Links */}
-                    <div className="flex flex-col gap-4 mb-8">
-                        {menuLinks.map((link, index) => (
-                            <Link 
-                                key={index} 
-                                to={link.path}
-                                onClick={closeMobileMenu}
-                                className='py-3 px-4 hover:bg-gray-50 hover:text-indigo-600 transition-colors rounded-lg'
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
-                    </div>
-
-                    {/* Mobile Contact Info */}
-                    <div className='flex items-center gap-3 mb-6 p-4 bg-gray-50 rounded-lg'>
-                        <div className='bg-indigo-600 rounded-full w-10 h-10 flex items-center justify-center'>
-                            <Phone size={20} className='text-white' />
-                        </div>
-                        <div>
-                            <p className='text-gray-500 text-sm'>Need help?</p>
-                            <p className='font-medium'>+1 876-227-2810</p>
-                        </div>
-                    </div>
-
-                    {/* Mobile Action Buttons */}
-                    <div className="flex flex-col gap-3">
-                        <button 
-                            onClick={handleAuthAction}
-                            className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 transition-colors text-white rounded-lg font-medium"
-                        >
-                            {user ? 'Logout' : 'Login'}
-                        </button>
-                        {isAdmin && (
-                            <button 
-                                onClick={handleAdminAction}
-                                className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 transition-colors text-white rounded-lg font-medium"
-                            >
-                                {isOwner ? 'Dashboard' : 'List Cars'}
-                            </button>
-                        )}
-                    </div>
-                </div>
+                <button onClick={()=> {user ? logout() : setShowLogin(true)}} className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition-all text-white rounded-lg">{user ? 'Logout' : 'Login'}</button>
             </div>
         </div>
-    )
+
+        <button className='sm:hidden cursor-pointer' aria-label="Menu" onClick={()=> setOpen(!open)}>
+            <img src={open ? assets.close_icon : assets.menu_icon} alt="menu" />
+        </button>
+      
+    </motion.div>
+  )
 }
 
 export default Navbar

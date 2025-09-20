@@ -78,7 +78,7 @@ const Footer = () => {
                     <ul className='mt-3 flex flex-col gap-1.5'>
                         <li>392 Waterford Parkway</li>
                         <li>Waterford P.O, Portmore, St.Catherine</li>
-                        <li>(876) 457-6184</li>
+                        <li>(876) 457-6184 or/ (876) 227-2810</li>
                         <li>Lacars2021@gmail.com</li>
                     </ul>
                 </div>

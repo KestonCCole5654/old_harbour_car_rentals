@@ -43,9 +43,14 @@ const PaymentPage = () => {
         const { data } = await axios.get('/api/owner/public-bank-details')
         if (data.success) {
           setPublicBankDetails(data.bankDetails)
+        } else {
+          toast.error(data.message) // Show specific error from backend
+          setPublicBankDetails(null) // Ensure it's null if fetch fails
         }
       } catch (error) {
+        toast.error('Error fetching public bank details.') // Generic network error
         console.log('Error fetching public bank details:', error)
+        setPublicBankDetails(null) // Ensure it's null on network error
       }
     }
     fetchPublicBankDetails()

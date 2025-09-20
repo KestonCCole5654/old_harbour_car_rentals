@@ -70,7 +70,7 @@ const Navbar = () => {
                 </div>
                 <div>
                     <p className='text-gray-500 text-sm'>Need help?</p>
-                    <p className='font-medium'>+1 876-227-2810</p>
+                    <p className='font-medium'>+1 876-457-6184</p>
                 </div>
             </div>
 

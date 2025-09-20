@@ -132,22 +132,16 @@ const PaymentPage = () => {
             </div>
           </div>
 
+          {/* Deposit Message */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="bg-white p-8 rounded-xl "
+            className="bg-white p-6 rounded-xl shadow-md text-center"
           >
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Important Requirements for Pickup</h3>
-            <ul className="list-disc list-inside text-gray-700 space-y-2">
-              <li>Driver’s license (front & back) – must be valid for 2+ years</li>
-              <li>Driver must be 23 years or older</li>
-              <li>Work ID</li>
-              <li>Passport</li>
-              <li>Proof of address (utility bill)</li>
-            </ul>
-            <p className="text-gray-500 text-sm mt-4">Please ensure you have these documents ready for a smooth pickup process.</p>
+            <p className="text-xl font-bold text-red-600">A deposit of 15k is required for vehicle reservations.</p>
           </motion.div>
+
         </div>
 
         {/* Right Column: Payment Method */}

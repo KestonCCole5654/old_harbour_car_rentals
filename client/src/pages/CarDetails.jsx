@@ -103,6 +103,10 @@ const CarDetails = () => {
           className='lg:col-span-1 flex flex-col gap-8'>
             <form onSubmit={handleSubmit} className='shadow-lg rounded-xl p-6 space-y-6 text-gray-500 bg-white'>
                 <h2 className="text-2xl font-bold text-gray-800">Book this car</h2>
+                {/* Deposit Message */}
+                <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-lg" role="alert">
+                    <p className="font-bold text-xl text-red-600">A deposit of 15k is required for vehicle reservations.</p>
+                </div>
                 <div className="mb-4">
                     <label htmlFor="pickup-date" className="block text-gray-700 text-sm font-medium mb-2">Pickup Date</label>
                     <input

@@ -63,6 +63,11 @@ const Cars = () => {
 
       <h2 className='text-3xl font-bold text-gray-800 text-center mb-8'>Select a vehicle group</h2>
 
+      {/* Deposit Message */}
+      <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-lg max-w-xl mx-auto mb-12" role="alert">
+        <p className="font-bold text-xl text-red-600 text-center">A deposit of 15k is required for vehicle reservations.</p>
+      </div>
+
       <div className='flex items-center bg-gray-100 px-4 max-w-xl mx-auto w-full h-12 rounded-full mb-12'>
         <img src={assets.search_icon} alt="Search" className='w-4.5 h-4.5 mr-2'/>
         <input

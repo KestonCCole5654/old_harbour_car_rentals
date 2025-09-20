@@ -8,21 +8,21 @@ const FeaturesSection = () => {
         <MapPin size={48} className='text-gray-800' />
         <h3 className='text-xl font-semibold mt-4 mb-2'>Availability</h3>
         <p className='text-gray-600 text-sm'>
-          Diam tincidunt tincidunt erat at semper fermentum. Id ultricies quis
+          Wide range of vehicles available when and where you need them.
         </p>
       </div>
       <div className='flex flex-col items-center text-center max-w-[280px]'>
         <Car size={48} className='text-gray-800' />
         <h3 className='text-xl font-semibold mt-4 mb-2'>Comfort</h3>
         <p className='text-gray-600 text-sm'>
-          Gravida auctor fermentum morbi vulputate ac egestas orcietium convallis
+          Enjoy a comfortable ride with our well-maintained and modern fleet.
         </p>
       </div>
       <div className='flex flex-col items-center text-center max-w-[280px]'>
         <Wallet size={48} className='text-gray-800' />
         <h3 className='text-xl font-semibold mt-4 mb-2'>Savings</h3>
         <p className='text-gray-600 text-sm'>
-          Pretium convallis id diam sed commodo vestibulum lobortis volutpat
+          Competitive pricing and flexible rental options to fit your budget.
         </p>
       </div>
     </div>

@@ -308,6 +308,7 @@ export const getPublicBankDetails = async (req, res) => {
     try {
         // These are the company's public bank details for direct transfers.
         // In a more robust system, this might come from a dedicated 'CompanySettings' document.
+
         if (!process.env.VITE_ADMIN_EMAIL) {
             return res.json({ success: false, message: "Company admin email for bank details is not configured." });
         }

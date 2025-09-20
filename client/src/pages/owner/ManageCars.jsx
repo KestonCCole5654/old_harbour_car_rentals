@@ -100,19 +100,11 @@ const ManageCars = () => {
                   </span>
                 </td>
 
-                <td className='flex items-center p-3 gap-2'>
+                <td className='flex items-center p-3'>
 
-                  <button 
-                    onClick={(e)=> {
-                      e.stopPropagation(); // Prevent row click event
-                      toggleAvailability(car._id)
-                    }}
-                    className={`px-3 py-1 rounded-full text-xs font-medium ${car.isAvaliable ? 'bg-red-100 text-red-600 hover:bg-red-200' : 'bg-green-100 text-green-600 hover:bg-green-200'} transition-colors`}
-                  >
-                    {car.isAvaliable ? "Make Unavailable" : "Make Available" }
-                  </button>
+                  <img onClick={()=> toggleAvailability(car._id)} src={car.isAvaliable ? assets.eye_close_icon : assets.eye_icon} alt="" className='cursor-pointer'/>
 
-                  <img onClick={(e)=> {e.stopPropagation(); deleteCar(car._id)}} src={assets.delete_icon} alt="" className='cursor-pointer h-5 w-5'/>
+                  <img onClick={()=> deleteCar(car._id)} src={assets.delete_icon} alt="" className='cursor-pointer'/>
                 </td>
 
               </tr>

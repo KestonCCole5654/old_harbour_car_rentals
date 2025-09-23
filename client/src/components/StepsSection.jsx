@@ -18,7 +18,8 @@ const StepsSection = () => {
         <div className='flex items-start gap-4'>
           <div className='flex items-center justify-center w-8 h-8 rounded-full bg-orange-500 text-white font-semibold flex-shrink-0'>2</div>
           <div>
-            <h3 className='text-lg font-semibold'>Verify Requirements & Qualitifcations</h3>
+            <h3 className='text-lg font-semibold'>Verify Requirements & Qualifications
+            </h3>
             <p className='text-sm mt-1'>
               Ensure you meet booking requirements (e.g., <strong>valid driver's license for 2+ years</strong>, <strong>23+ years old</strong>, <strong>Work ID</strong>, <strong>Passport</strong>, <strong>Proof of address (utility bill)</strong>).<br />
               <strong>Optionally upload documents now or bring them at pickup</strong>.

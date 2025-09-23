@@ -20,7 +20,7 @@ const AddCar = () => {
     transmission: '',
     fuel_type: '',
     seating_capacity: '',
-    location: 'Waterford, Portmore',
+    location: 'Congreve Park, 23, Portmore',
     description: '',
   })
 
@@ -78,7 +78,7 @@ const AddCar = () => {
                 transmission: '',
                 fuel_type: '',
                 seating_capacity: '',
-                location: 'Waterford, Portmore',
+                location: 'Congreve Park, 23, Portmore',
                 description: '',
             })
         }
@@ -176,7 +176,7 @@ const AddCar = () => {
             <label>Location</label>
             <select onChange={e=> setCar({...car, location: e.target.value})} value={car.location} className='px-3 py-2 mt-1 border border-borderColor rounded-md outline-none'>
               <option value="">Select a location</option>
-              <option value="Waterford, Portmore">Waterford, Portmore</option>
+              <option value="Congreve Park, 23, Portmore">Congreve Park, 23, Portmore</option>
             </select>
          </div>
         {/* Car Description */}

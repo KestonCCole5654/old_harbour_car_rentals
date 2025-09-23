@@ -76,9 +76,9 @@ const Footer = () => {
                 <div>
                     <h2 className='text-base font-medium text-gray-800 uppercase'>Contact</h2>
                     <ul className='mt-3 flex flex-col gap-1.5'>
-                        <li>392 Waterford Parkway</li>
-                        <li>Waterford P.O, Portmore, St.Catherine</li>
-                        <li>(876) 457-6184 or/ (876) 227-2810</li>
+                        <li>Congreve Park, 23</li>
+                        <li>Portmore</li>
+                        <li>(876) 393-1140 </li>
                         <li>Lacars2021@gmail.com</li>
                     </ul>
                 </div>

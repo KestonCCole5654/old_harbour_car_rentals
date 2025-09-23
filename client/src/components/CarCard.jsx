@@ -3,45 +3,75 @@ import { assets } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
 
 const CarCard = ({car}) => {
-
     const currency = import.meta.env.VITE_CURRENCY
     const navigate = useNavigate()
 
-  return (
-    <div className='bg-white p-6 rounded-lg border border-gray-100 flex flex-col overflow-hidden'>
-      <div className='w-full h-48 flex items-center justify-center mb-4 bg-white rounded-lg'>
-        <img src={car.image} alt={car.model} className='h-full object-contain'/>
-      </div>
-      <h3 className='text-xl font-bold mb-1 text-gray-800'>{car.brand}</h3>
-      <p className='text-gray-500 text-sm mb-4'>{car.category} • {car.year} • {car.location}</p>
+    return (
+        <div className='bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-shadow duration-200 overflow-hidden'>
+            {/* Image Section */}
+            <div className='w-full h-48 bg-gray-50 flex items-center justify-center p-4'>
+                <img 
+                    src={car.image} 
+                    alt={car.model} 
+                    className='h-full object-contain'
+                />
+            </div>
 
-      <div className='flex justify-between items-center w-full mb-4'>
-          <span className='text-3xl font-bold text-indigo-600'>${car.pricePerDay}</span>
-          <span className='text-gray-500 text-sm'>per day</span>
-      </div>
-      <div className='grid grid-cols-2 gap-y-2 w-full text-gray-600 text-sm mb-6'>
-          <div className='flex items-center gap-1'>
-              <img src={assets.car_icon} alt="transmission" className='w-5 h-5'/> 
-              <span>{car.transmission}</span>
-          </div>
-          <div className='flex items-center gap-1'>
-              <img src={assets.fuel_icon} alt="fuel" className='w-5 h-5'/> 
-              <span>{car.fuel_type}</span>
-          </div>
-          <div className='flex items-center gap-1'>
-              <img src={assets.check_icon} alt="air conditioning" className='w-5 h-5'/> 
-              <span>A/C</span>
-          </div>
-          <div className='flex items-center gap-1'>
-              <img src={assets.users_icon} alt="seating capacity" className='w-5 h-5'/> 
-              <span>{car.seating_capacity} Seats</span>
-          </div>
-      </div>
-      <button onClick={()=> navigate(`/car-details/${car._id}`)} className='bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition-colors w-full'>
-          View Details
-      </button>
-    </div>
-  )
+            {/* Content Section */}
+            <div className='p-6'>
+                {/* Header */}
+                <div className='mb-4'>
+                    <h3 className='text-xl font-semibold text-gray-900 mb-1'>
+                        {car.brand}
+                    </h3>
+                    <p className='text-gray-600 text-sm'>
+                        {car.category} • {car.year} • {car.location}
+                    </p>
+                </div>
+
+                {/* Features */}
+                <div className='grid grid-cols-3 gap-6 mb-6 text-sm text-gray-600'>
+                    <div className='flex items-center gap-2 '>
+                        <img src={assets.car_icon} alt="transmission" className='w-4 h-4'/> 
+                        <span>{car.transmission}</span>
+                    </div>
+                    <div className='flex items-center gap-2'>
+                        <img src={assets.fuel_icon} alt="fuel" className='w-4 h-4'/> 
+                        <span>{car.fuel_type}</span>
+                    </div>
+                    <div className='flex items-center gap-2'>
+                        <img src={assets.users_icon} alt="seating capacity" className='w-4 h-4'/> 
+                        <span>{car.seating_capacity} Seats</span>
+                    </div>
+                </div>
+
+                {/* Pricing */}
+                <div className='bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-4 mb-6'>
+                    <div className='flex items-center justify-between'>
+                        <div>
+                            <div className='flex items-baseline gap-1 mb-1'>
+                                <span className='text-2xl font-bold text-primary'>
+                                    {currency}
+                                    {Number(car.pricePerDay).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+                                </span>
+                                <span className='text-gray-600 text-sm'>/ day</span>
+                            </div>
+                            <p className='text-xs text-gray-600'>Best price guaranteed</p>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                {/* Action Button */}
+                <button 
+                    onClick={() => navigate(`/car-details/${car._id}`)}
+                    className='w-full bg-primary text-white py-3 px-4 rounded-lg hover:bg-hover transition-colors font-medium'
+                >
+                    View Details
+                </button>
+            </div>
+        </div>
+    )
 }
 
 export default CarCard

@@ -1,107 +1,151 @@
 "use client"
-import { motion } from "framer-motion"
-import { Chrome, Star, Quote } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Chrome, Star, Quote, ChevronLeft, ChevronRight } from "lucide-react"
+import { useState } from "react"
 
 const Testimonial = () => {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  
   const testimonials = [
     {
-      name: "Kinesha Philadelphia",
-      image: "https://res.cloudinary.com/dfr0omibd/image/upload/v1758211906/testimonial_image_1_wxomsl.png",
+      name: "Chenelle Dean",
+      image: "https://res.cloudinary.com/dfr0omibd/image/upload/v1758666460/unnamed_1_rswavz.png",
       testimonial:
-        "The car was well taken care of & reliable. The staff was friendly and communicative. Highly recommend.",
-      role: "LA Car Rentals Customer",
-      company: "",
+        "Great customer service. Easy to book as a non resident. They meet you where you are located. Very responsive.",
+      role: "Google Business Reviews",
+      company: "Shelmur Car Rentals",
       companyLogo: null,
     },
     {
-      name: "I Am Teno",
-      image: "https://res.cloudinary.com/dfr0omibd/image/upload/v1758211906/testimonial_image_2_b5o0kr.png",
+      name: "Maunie Williams",
+      image: "https://res.cloudinary.com/dfr0omibd/image/upload/v1758666460/unnamed_jpwonq.png",
       testimonial:
-        "The cars that I've rented are clean and in immaculate condition it's like driving a brand new car plus the customer service is very good I'd recommend LA Car Rental Ltd yo anyone",
-      role: "LA Car Rentals Customer ",
-      company: "",
+        "Most recommended 💯",
+      role: "Google Business Reviews",
+      company: "Shelmur Car Rentals",
       companyLogo: null,
     },
-    {
-      name: "Daniel Gray",
-      image: "https://res.cloudinary.com/dfr0omibd/image/upload/v1758211906/testimony3_sm3iv9.png",
-      testimonial:
-        "Clean and Reliable cars, I’ll always use LA Rentals. Highly Recommended",
-      role: "LA Car Rentals Customer",
-      company: "",
-      companyLogo: null,
-    },
-    {
-      name: "Denise Weston",
-      image: "https://res.cloudinary.com/dfr0omibd/image/upload/v1758212200/testimonial_4_kfhlqm.png",
-      testimonial:
-        "The service is reliable and affordable and they are very professional with what they do . Hit them up for all your rental needs today.",
-      role: "LA Car Rentals Customer ",
-      company: "",
-      companyLogo: null,
-    },
+    
   ]
 
+  const nextTestimonial = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+  }
+
+  const prevTestimonial = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  }
+
+  const goToTestimonial = (index) => {
+    setCurrentIndex(index)
+  }
+
   return (
-    <div className="max-w-6xl mx-auto py-16 px-6 mb-12 lg:px-10 bg-white">
-      <h2 className="text-center text-3xl font-semibold text-gray-800 mb-4">Reviews from our customers</h2>
-      <p className="text-center text-gray-600 mb-2">Based on Google Reviews</p>
-      <div className="flex items-center justify-center gap-1 mb-8">
-        {[...Array(5)].map((_, i) => (
-          <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-        ))}
-        <span className="ml-2 text-gray-600 font-medium">4.9 out of 5</span>
+    <div className="max-w-4xl mx-auto py-20 px-6 bg-white">
+      <div className="text-center mb-8">
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          What our customers say
+        </h2>
+        <div className="flex items-center justify-center gap-1 mb-2">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} className="h-5 w-5 fill-primary text-primary" />
+          ))}
+          <span className="ml-2 text-gray-600 font-medium">4.9 out of 5</span>
+        </div>
+        <p className="text-gray-600">Based on Google Reviews</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-        {testimonials.map((testimonial, index) => (
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.3 }}
-            key={index}
-            className="bg-white rounded-2xl border border-gray-200 shadow-sm flex flex-col p-8"
-          >
-            <div className="relative mb-4">
-              <Quote className="h-6 w-6 text-blue-600 mb-3" />
-              <div className="flex items-center gap-1 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                ))}
+      <div className="relative">
+        {/* Navigation Arrows */}
+        <button
+          onClick={prevTestimonial}
+          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-10 p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-200 border border-gray-100"
+        >
+          <ChevronLeft className="h-6 w-6 text-primary" />
+        </button>
+        
+        <button
+          onClick={nextTestimonial}
+          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-10 p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-200 border border-gray-100"
+        >
+          <ChevronRight className="h-6 w-6 text-primary" />
+        </button>
+
+        {/* Testimonial Card */}
+        <div className="relative overflow-hidden min-h-[400px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="bg-gray-50 rounded-3xl p-12 text-center shadow-sm"
+            >
+              {/* Quote */}
+              <div className="mb-8">
+                <Quote className="h-8 w-8 text-hover mx-auto mb-6 opacity-60" />
+                <p className="text-2xl leading-relaxed text-gray-800 font-medium max-w-3xl mx-auto">
+                  "{testimonials[currentIndex].testimonial}"
+                </p>
               </div>
-              <p className="text-gray-700 leading-relaxed">{testimonial.testimonial}</p>
-            </div>
-            <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-              <div className="flex items-center gap-3">
+
+              {/* Profile */}
+              <div className="flex flex-col items-center">
                 <img
-                  className="w-10 h-10 rounded-full object-cover"
-                  src={testimonial.image}
-                  alt={testimonial.name}
+                  className="w-16 h-16 rounded-full object-cover mb-4 ring-4 ring-white shadow-lg"
+                  src={testimonials[currentIndex].image}
+                  alt={testimonials[currentIndex].name}
                 />
                 <div>
-                  <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                  <p className="text-sm text-gray-500">
-                    {testimonial.role}, {testimonial.company}
+                  <p className="text-xl font-bold text-gray-900 mb-1">
+                    {testimonials[currentIndex].name}
+                  </p>
+                  <p className="text-gray-600">
+                    {testimonials[currentIndex].role}, {testimonials[currentIndex].company}
                   </p>
                 </div>
+
+                {/* Stars */}
+                <div className="flex items-center gap-1 mt-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                  ))}
+                </div>
               </div>
-              <Chrome className="h-5 w-5 text-gray-400" />
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Dots Navigation */}
+        <div className="flex justify-center gap-2 mt-6">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToTestimonial(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentIndex 
+                  ? 'bg-primary' 
+                  : 'bg-gray-300 hover:bg-gray-400'
+              }`}
+            />
+          ))}
+        </div>
       </div>
 
-      <div className="text-center mt-12">
-        <p className="text-gray-600 mb-4">Click below to see even more credible customer reviews on Google!</p>
+      {/* CTA */}
+      <div className="text-center mt-8">
+        <p className="text-gray-600 mb-6 text-lg">
+          Click below to see even more credible customer reviews on Google!
+        </p>
         <a
-          href="https://share.google/lint9PZPWDq6lT6xT"
+          href="https://www.google.com/search?q=shelmur+car+rental&sca_esv=709f3fcfd06fca0b&hl=en-JM&sxsrf=AE3TifNAERx1WT_8f6lXuIrp3gFf1nwCjQ%3A1758667726437&ei=ziPTaOS4GvGFwbkP2Yix2Qw&ved=0ahUKEwjk1_Lo---PAxXxQjABHVlELMsQ4dUDCBA&uact=5&oq=shelmur+car+rental&gs_lp=Egxnd3Mtd2l6LXNlcnAiEnNoZWxtdXIgY2FyIHJlbnRhbDIHECMYsAMYJzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYR0jkCFAAWABwAXgBkAEAmAEAoAEAqgEAuAEDyAEAmAIBoAIDmAMAiAYBkAYJkgcBMaAHALIHALgHAMIHAzAuMcgHAg&sclient=gws-wiz-serp"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+          className="inline-flex items-center gap-3 bg-primary hover:bg-hover text-white px-8 py-4 rounded-full font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
         >
-          <Chrome className="h-4 w-4" />
-          See more here
+          <Chrome className="h-5 w-5" />
+          See more reviews
         </a>
       </div>
     </div>

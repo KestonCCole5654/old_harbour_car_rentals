@@ -59,7 +59,7 @@ const AboutUs = () => {
             <div>
               <h3 className='text-xl font-semibold text-gray-800 mb-2'>Wide Selection of Vehicles</h3>
               <p className='text-gray-600 text-sm'>
-                LA Car Rental LTD offers a diverse fleet of vehicles, from compact cars to luxury SUVs, ensuring you find the perfect ride for any occasion or need.
+                Shemulr Car Rentals Limited offers a diverse fleet of vehicles, from compact cars to luxury SUVs, ensuring you find the perfect ride for any occasion or need.
               </p>
             </div>
             <div>
@@ -77,7 +77,7 @@ const AboutUs = () => {
             <div>
               <h3 className='text-xl font-semibold text-gray-800 mb-2'>Flexible & Convenient</h3>
               <p className='text-gray-600 text-sm'>
-                We make car rental easy and hassle-free, offering flexible payment options and the ability to reserve online or in person. LA Car Rental LTD adapts to your schedule and needs.
+                We make car rental easy and hassle-free, offering flexible payment options and the ability to reserve online or in person. Shemulr Car Rentals Limited adapts to your schedule and needs.
               </p>
             </div>
           </div>
@@ -93,7 +93,7 @@ const AboutUs = () => {
         <div className='max-w-6xl mx-auto py-16 px-6 lg:px-10 text-center'>
         <h2 className='text-3xl font-bold text-gray-800 mb-8'>Our Location</h2>
         <div className='aspect-w-16 aspect-h-9 w-full rounded-lg overflow-hidden shadow-lg'>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3794.8396893820336!2d-76.8687514!3d17.9861939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8edb158db3e63323%3A0xa650e4b256db4227!2sLA%20Car%20Rentals%20LTD.!5e0!3m2!1sen!2sjm!4v1758213266950!5m2!1sen!2sjm" width="100%" height="450" style={{ border: "0" }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3795.492511728792!2d-76.8878144!3d17.9558089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8edb6b001d0185b7%3A0xf33ad97d19a7ba7b!2sSHELMUR%20CAR%20RENTAL%20LIMITED!5e0!3m2!1sen!2sjm!4v1758668950336!5m2!1sen!2sjm" width="100%" height="450" style={{ border: "0" }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
 
@@ -123,7 +123,6 @@ const AboutUs = () => {
 
       
 
-      <CallToActionBanner />
 
     </motion.div>
   )

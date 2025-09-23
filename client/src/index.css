@@ -7,8 +7,9 @@
 }
 
 @theme {
-  --color-primary: #2563EB;
-  --color-primary-dull: #1F58D8;
+  --color-primary: #2B2F92;
+  --color-hover:#1E216A;
+  --color-primary-dull: #2B2F92;
   --color-light: #F1F5F9;
   --color-borderColor: #c4c7d2;
 }

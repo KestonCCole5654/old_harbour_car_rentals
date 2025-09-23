@@ -18,7 +18,7 @@ const Home = () => {
       
       <StepsSection />
       <FeaturedSection />
-      <CarSourcingBanner />
+     
       <Testimonial />
       <Banner />
       <ContactInfoSection />

@@ -51,13 +51,13 @@ const Navbar = () => {
     initial={{y: -20, opacity: 0}}
     animate={{y: 0, opacity: 1}}
     transition={{duration: 0.5}}
-    className={`flex items-center justify-between px-6  md:px-16 lg:px-24 xl:px-32 py-4 text-gray-600 border-b border-borderColor relative transition-all ${location.pathname === "/" && "bg-light"}`}>
+    className={`flex items-center justify-between px-6  md:px-16 lg:px-24 xl:px-32 py-4 text-gray-600 border-b border-borderColor relative transition-all ${location.pathname === "/" && "bg-white"}`}>
 
         <Link to='/'>
             <motion.img whileHover={{scale: 1.05}} src={assets.logo} alt="logo"  className="h-20"/>
         </Link>
 
-        <div className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-16 max-sm:border-t border-borderColor right-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 max-sm:p-4 transition-all duration-300 z-50 ${location.pathname === "/" ? "bg-light" : "bg-white"} ${open ? "max-sm:translate-x-0" : "max-sm:translate-x-full"}`}>
+        <div className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-16 max-sm:border-t border-borderColor right-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 max-sm:p-4 transition-all duration-300 z-50 ${location.pathname === "/" ? "bg-white" : "bg-white"} ${open ? "max-sm:translate-x-0" : "max-sm:translate-x-full"}`}>
             {menuLinks.map((link, index)=> (
                 <Link key={index} to={link.path}>
                     {link.name}
@@ -65,12 +65,12 @@ const Navbar = () => {
             ))}
 
             <div className='flex items-center gap-3'>
-                <div className='bg-indigo-600 rounded-full w-10 h-10 flex items-center justify-center'>
+                <div className='bg-primary rounded-full w-10 h-10 flex items-center justify-center'>
                     <Phone size={20} className='text-white' />
                 </div>
                 <div>
                     <p className='text-gray-500 text-sm'>Need help?</p>
-                    <p className='font-medium'>+1 876-457-6184</p>
+                    <p className='font-medium'>+1 (876) 393-1140</p>
                 </div>
             </div>
 

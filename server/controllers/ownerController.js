@@ -309,11 +309,11 @@ export const getPublicBankDetails = async (req, res) => {
         // These are the company's public bank details for direct transfers.
         // In a more robust system, this might come from a dedicated 'CompanySettings' document.
 
-        if (!process.env.VITE_ADMIN_EMAIL) {
+        if (!process.env.ADMIN_EMAIL) {
             return res.json({ success: false, message: "Company admin email for bank details is not configured." });
         }
 
-        const adminUser = await User.findOne({ email: process.env.VITE_ADMIN_EMAIL });
+        const adminUser = await User.findOne({ email: process.env.ADMIN_EMAIL });
 
         if (!adminUser || !adminUser.bankName) {
             return res.json({ success: false, message: "Company bank details not found or not configured." });

@@ -2,8 +2,12 @@ import mongoose from "mongoose";
 
 const connectDB = async ()=>{
     try {
-        mongoose.connection.on('connected', ()=> console.log("Database Connected"));
-        await mongoose.connect(`${process.env.MONGODB_URI}/car-rental`, {
+        mongoose.connection.on('connected', ()=> console.log("MongoDB connected"));
+        mongoose.connection.on('error', (err)=> console.error("MongoDB connection error:", err.message));
+        mongoose.connection.on('disconnected', ()=> console.warn("MongoDB disconnected"));
+
+        await mongoose.connect(process.env.MONGODB_URI, {
+            dbName: 'car-rental',
             serverSelectionTimeoutMS: 30000,
             socketTimeoutMS: 45000,
             connectTimeoutMS: 30000,

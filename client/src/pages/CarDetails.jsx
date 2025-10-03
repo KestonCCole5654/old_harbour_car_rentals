@@ -80,7 +80,7 @@ const CarDetails = () => {
 
           className='lg:col-span-1'>
               <h1 className='text-3xl font-bold mb-1'>{car.brand}</h1>
-              <p className='text-indigo-600 text-3xl font-bold mb-4'>{currency}{car.pricePerDay} <span className='text-gray-500 text-sm font-normal'>/ day</span></p>
+              <p className='text-accent text-3xl font-bold mb-4'>{currency}{car.pricePerDay} <span className='text-gray-500 text-sm font-normal'>/ day</span></p>
               <motion.img 
               initial={{ scale: 0.98, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -133,7 +133,7 @@ const CarDetails = () => {
                 </div>
                 <button
                     type="submit"
-                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="w-full bg-accent hover:bg-accent-hover text-white font-bold py-3 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
                 >
                     Book Now
                 </button>
@@ -193,7 +193,7 @@ const CarDetails = () => {
         <div className='w-full flex justify-between items-center mb-10'>
                 <h2 className='text-3xl font-semibold text-gray-800'>Other cars</h2>
                 <p
-                    className='text-indigo-600 font-medium cursor-pointer flex items-center gap-2'
+                    className='text-accent font-medium cursor-pointer flex items-center gap-2'
                     onClick={() => navigate('/cars')}
                 >
                     View All <img src={assets.arrow_icon} alt="arrow" className='w-4 h-4'/>

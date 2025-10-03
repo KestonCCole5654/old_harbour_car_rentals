@@ -76,10 +76,10 @@ const Footer = () => {
                 <div>
                     <h2 className='text-base font-medium text-gray-800 uppercase'>Contact</h2>
                     <ul className='mt-3 flex flex-col gap-1.5'>
-                        <li>Congreve Park, 23</li>
-                        <li>Portmore</li>
-                        <li>(876) 393-1140 </li>
-                        <li>Lacars2021@gmail.com</li>
+                        <li>73 Featherbed Lane, Spanish Town, Jamaica</li>
+                        <li>Spanish Town</li>
+                        <li>(876) 204-7831 </li>
+                        <li>Degreecb11@gmail.com</li>
                     </ul>
                 </div>
 

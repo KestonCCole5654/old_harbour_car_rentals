@@ -65,7 +65,7 @@ const CarCard = ({car}) => {
                 {/* Action Button */}
                 <button 
                     onClick={() => navigate(`/car-details/${car._id}`)}
-                    className='w-full bg-primary text-white py-3 px-4 rounded-lg hover:bg-hover transition-colors font-medium'
+                    className='w-full bg-accent text-white py-3 px-4 rounded-lg hover:bg-accent-hover transition-colors font-medium'
                 >
                     View Details
                 </button>

@@ -65,21 +65,21 @@ const Navbar = () => {
             ))}
 
             <div className='flex items-center gap-3'>
-                <div className='bg-primary rounded-full w-10 h-10 flex items-center justify-center'>
+                <div className='bg-accent rounded-full w-10 h-10 flex items-center justify-center'>
                     <Phone size={20} className='text-white' />
                 </div>
                 <div>
                     <p className='text-gray-500 text-sm'>Need help?</p>
-                    <p className='font-medium'>+1 (876) 393-1140</p>
+                    <p className='font-medium'>+1 (876) 204-7831</p>
                 </div>
             </div>
 
             <div className='flex max-sm:flex-col items-start sm:items-center gap-6'>
                 {isOwner && (
-                    <button onClick={()=> navigate('/owner')} className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition-all text-white rounded-lg">Dashboard</button>
+                    <button onClick={()=> navigate('/owner')} className="cursor-pointer px-8 py-2 bg-accent hover:bg-accent-hover transition-all text-white rounded-lg">Dashboard</button>
                 )}
 
-                <button onClick={()=> {user ? logout() : setShowLogin(true)}} className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition-all text-white rounded-lg">{user ? 'Logout' : 'Login'}</button>
+                <button onClick={()=> {user ? logout() : setShowLogin(true)}} className="cursor-pointer px-8 py-2 bg-accent hover:bg-accent-hover transition-all text-white rounded-lg">{user ? 'Logout' : 'Login'}</button>
             </div>
         </div>
 

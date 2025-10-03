@@ -19,7 +19,7 @@ const CarSourcingBanner = () => {
           for you, even if it's not currently in our direct inventory. Your ideal ride is just a request away!
         </p>
         <button
-          className="mt-8 px-8 py-3 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors font-semibold"
+          className="mt-8 px-8 py-3 bg-accent text-white rounded-full hover:bg-accent-hover transition-colors font-semibold"
           onClick={() => window.open('https://wa.me/18764576184', '_blank')}
         >
           Request a Car

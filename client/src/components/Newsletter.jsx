@@ -16,14 +16,14 @@ const Newsletter = () => {
              whileInView={{ opacity: 1, y: 0 }}
              transition={{ delay: 0.2, duration: 0.5 }}
 
-            className="md:text-4xl text-2xl font-semibold">Never Miss a Deal!</motion.h1>
+            className="text-xl md:text-2xl lg:text-3xl font-semibold">Never Miss a <span className='text-accent'>Deal!</span></motion.h1>
 
             <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
 
-            className="md:text-lg text-gray-500/70 pb-8">
+            className="text-sm md:text-base text-gray-500/70 pb-6">
                 Subscribe to get the latest offers, new arrivals, and exclusive discounts
             </motion.p>
             <motion.form 
@@ -31,14 +31,14 @@ const Newsletter = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
 
-            className="flex items-center justify-between max-w-2xl w-full md:h-13 h-12">
+            className="flex items-center justify-between max-w-2xl w-full h-11">
                 <input
-                    className="border border-gray-300 rounded-md h-full border-r-0 outline-none w-full rounded-r-none px-3 text-gray-500"
+                    className="border border-gray-300 rounded-md h-full border-r-0 outline-none w-full rounded-r-none px-3 text-sm text-gray-500"
                     type="text"
                     placeholder="Enter your email id"
                     required
                 />
-                <button type="submit" className="md:px-12 px-8 h-full text-white bg-primary hover:bg-primary-dull transition-all cursor-pointer rounded-md rounded-l-none">
+                <button type="submit" className="px-8 md:px-10 h-full text-white text-sm bg-accent hover:bg-accent-hover transition-all duration-300 cursor-pointer rounded-md rounded-l-none">
                     Subscribe
                 </button>
             </motion.form>

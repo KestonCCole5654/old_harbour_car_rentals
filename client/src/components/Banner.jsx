@@ -34,7 +34,7 @@ const Banner = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 py-3 bg-[#1E216A] hover:bg-[#2B2F92] text-white rounded-full flex items-center justify-center cursor-pointer font-semibold w-full"
+            className="px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-full flex items-center justify-center cursor-pointer font-semibold w-full"
             onClick={() => {
               navigate('/cars');
               scrollTo(0, 0);

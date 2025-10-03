@@ -123,7 +123,7 @@ const PaymentPage = () => {
               <div className="w-full md:w-2/3">
                 <p className="text-2xl font-bold text-gray-800 mb-1">{car.brand} {car.model}</p>
                 <p className="text-gray-500 text-sm mb-4">{car.category} • {car.year} • {car.location}</p>
-                <p className="text-3xl font-bold text-indigo-600">{currency}{car.pricePerDay} <span className="text-gray-500 text-sm font-normal">per day</span></p>
+                <p className="text-3xl font-bold text-accent">{currency}{car.pricePerDay} <span className="text-gray-500 text-sm font-normal">per day</span></p>
               </div>
             </div>
             <div className="mt-6 text-gray-600">
@@ -151,21 +151,21 @@ const PaymentPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <div
-                  className={`border rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer transition-all h-full ${selectedPaymentMethod === 'upfront' ? 'border-indigo-600 shadow-lg' : 'border-gray-300 hover:border-indigo-400'}`}
+                  className={`border rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer transition-all h-full ${selectedPaymentMethod === 'upfront' ? 'border-accent shadow-lg' : 'border-gray-300 hover:border-accent'}`}
                   onClick={() => setSelectedPaymentMethod('upfront')}
                 >
-                  <CreditCard size={48} className={`mb-4 ${selectedPaymentMethod === 'upfront' ? 'text-indigo-600' : 'text-gray-500'}`} />
-                  <p className={`text-lg font-medium ${selectedPaymentMethod === 'upfront' ? 'text-indigo-600' : 'text-gray-800'}`}>Pay Upfront</p>
+                  <CreditCard size={48} className={`mb-4 ${selectedPaymentMethod === 'upfront' ? 'text-accent' : 'text-gray-500'}`} />
+                  <p className={`text-lg font-medium ${selectedPaymentMethod === 'upfront' ? 'text-accent' : 'text-gray-800'}`}>Pay Upfront</p>
                   <p className="text-gray-500 text-sm text-center">Secure payment via credit/debit card.</p>
                 </div>
               </div>
               <div>
                 <div
-                  className={`border rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer transition-all h-full ${selectedPaymentMethod === 'cash_deposit' ? 'border-indigo-600 shadow-lg' : 'border-gray-300 hover:border-indigo-400'}`}
+                  className={`border rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer transition-all h-full ${selectedPaymentMethod === 'cash_deposit' ? 'border-accent shadow-lg' : 'border-gray-300 hover:border-accent'}`}
                   onClick={() => setSelectedPaymentMethod('cash_deposit')}
                 >
-                  <Landmark size={48} className={`mb-4 ${selectedPaymentMethod === 'cash_deposit' ? 'text-indigo-600' : 'text-gray-500'}`} />
-                  <p className={`text-lg font-medium ${selectedPaymentMethod === 'cash_deposit' ? 'text-indigo-600' : 'text-gray-800'}`}>Direct Cash Deposit</p>
+                  <Landmark size={48} className={`mb-4 ${selectedPaymentMethod === 'cash_deposit' ? 'text-accent' : 'text-gray-500'}`} />
+                  <p className={`text-lg font-medium ${selectedPaymentMethod === 'cash_deposit' ? 'text-accent' : 'text-gray-800'}`}>Direct Cash Deposit</p>
                   <p className="text-gray-500 text-sm text-center">Pay a deposit in cash upon pickup.</p>
                 </div>
               </div>
@@ -240,7 +240,7 @@ const PaymentPage = () => {
       <button
         onClick={handleConfirmBooking}
         disabled={!selectedPaymentMethod || isBooking || (selectedPaymentMethod === 'cash_deposit' && !publicBankDetails)}
-        className="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors w-full disabled:opacity-50 disabled:cursor-not-allowed"
+        className="bg-accent text-white px-8 py-3 rounded-lg hover:bg-accent-hover transition-colors w-full disabled:opacity-50 disabled:cursor-not-allowed mt-8"
       >
         {isBooking ? 'Confirming...' : 'Confirm Booking'}
       </button>

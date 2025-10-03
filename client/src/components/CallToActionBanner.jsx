@@ -23,17 +23,17 @@ const CallToActionBanner = () => {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className='flex flex-col md:flex-row md:items-center items-start justify-between px-6 lg:px-10 py-16 bg-[#6366F1] max-w-6xl mx-auto rounded-3xl overflow-hidden relative bg-[url("./assets/tire_track.png")] bg-no-repeat bg-cover bg-center'
+      className='flex flex-col md:flex-row md:items-center items-start justify-between px-6 lg:px-8 py-12 bg-gradient-to-br from-primary via-primary to-hover max-w-6xl mx-auto rounded-2xl overflow-hidden relative bg-[url("./assets/tire_track.png")] bg-no-repeat bg-cover bg-center'
     >
       <div className="text-white max-w-lg relative z-10">
-        <h2 className="text-4xl font-semibold leading-tight">Looking for a car for your next adventure?</h2>
-        <p className="mt-4 text-sm">
+        <h2 className="text-2xl md:text-3xl font-semibold leading-tight">Looking for a car for your next <span className="text-accent">adventure?</span></h2>
+        <p className="mt-3 text-xs md:text-sm leading-relaxed">
           Search our extensive collection of vehicles and find the perfect ride for your journey. Fast, easy, and reliable.
         </p>
         <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className='mt-8 px-8 py-3 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors'
+            className='mt-6 px-6 py-2.5 bg-accent text-white text-sm rounded-full hover:bg-accent-hover transition-all duration-300 shadow-md hover:shadow-lg'
             onClick={()=> navigate('/cars')}
         >
             Book now

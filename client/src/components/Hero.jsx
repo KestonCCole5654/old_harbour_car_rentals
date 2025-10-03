@@ -41,7 +41,7 @@ const Hero = () => {
                   initial={{ y: 50, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
-                  className='mt-6 mb-12 px-6 py-2.5 bg-accent hover:bg-accent-hover text-white text-sm rounded-full transition-all duration-300 hover:shadow-lg'
+                  className='mt-6 mb-0 px-6 py-2.5 bg-accent hover:bg-accent-hover text-white text-sm rounded-full transition-all duration-300 hover:shadow-lg'
                   onClick={()=> navigate('/cars')}
                   >
                   View all cars
@@ -55,7 +55,7 @@ const Hero = () => {
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className='flex justify-center lg:justify-start items-center lg:flex-1 mt-6 lg:mt-0'
+            className='flex justify-center lg:justify-start items-center lg:flex-1 mt-6 mb-36 md:mb-0 lg:mt-0'
           >
             <img
               src={assets.main_car}
